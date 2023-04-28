@@ -1,0 +1,207 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model LocalOD
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h1 class="head2"><b>CREATE NEW ENTRY</b></h1>
+<hr />
+
+
+<form asp-action="Create">
+
+    <div class="form-group1">
+        <label asp-for="EmployeeNo">Employee No. : </label>
+        <input asp-for="EmployeeNo" class="form-control" />
+        <span class=" var" asp-validation-for="EmployeeNo" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="EmployeeName">Employee Name : </label>
+        <input asp-for="EmployeeName" class="form-control" />
+        <span class=" var" asp-validation-for="EmployeeName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitLocation">Visit Location : </label>
+        <input asp-for="VisitLocation" class="form-control" />
+        <span class=" var" asp-validation-for="VisitLocation" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PurposeOfVisit">Purpose Of Visit : </label>
+        <input asp-for="PurposeOfVisit" class="form-control" />
+        <span class=" var" asp-validation-for="PurposeOfVisit" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TypeOfVisit" class="control-label">Type Of Visit : </label>
+        <select asp-for="TypeOfVisit" asp-items="@ViewBag.TypeOfVisit" >
+            <option value="">-- Select an option --</option>
+            <option value="Official">Official</option>
+            <option value="Personal">Personal</option>
+        </select>
+        <span class=" var" asp-validation-for="TypeOfVisit" ></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TypeOfLocalOD" >Type of LocalOD : </label>
+        <select class="input[type=" text"]" asp-for="TypeOfLocalOD" onchange="updateDateTimeFields(this.value)">
+            <option value="">-- Select an option --</option>
+            <option value="Intermidiate">Intermidiate</option>
+            <option value="SinceMorning">Since Morning</option>
+            <option value="UptoEvening">Upto Evening</option>
+        </select>
+        <span asp-validation-for="TypeOfLocalOD" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OutDateTime">Out Date and Time : </label>
+        <input asp-for="OutDateTime" id="OutDateTime" placeholder="dd/mm/yyyy hh:mm:ss" readonly/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InDateTime">In Date and Time : </label>
+        <input asp-for="InDateTime" id="InDateTime" placeholder="dd/mm/yyyy hh:mm:ss" readonly/>
+    </div>
+    
+
+   
+
+    <div class="form1";>
+        <button type="submit" class="btn btn-secondary btn-lg">Create</button>
+        <a asp-action="Index" class="btn btn-danger btn-lg" style="margin-left: 2%;">Cancel</a>
+    </div>
+
+</form>
+
+
+
+<style>
+    .var {
+        margin-left: 15%;
+        color: #f3172d;
+    }
+
+    .head2 {
+        text-align: center;
+    }
+    /* Add your custom styles here */
+    /* Example: */
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        text-align: center;
+    }
+
+    .form1 {
+        margin-top: 2%;
+        margin-left: 46%;
+    }
+
+    .form-group {
+        margin-left: 30.5%;
+    }
+
+    .form-group1 {
+        margin-bottom: 20px;
+        display: flex;
+        margin-top: 3%;
+        text-align: center;
+        margin-left: 30.5%;
+    }
+
+    label {
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-left: 15%;
+        text-align: center;
+    }
+    select{
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+        font-size: 16px;
+        margin-left: 3%;
+        text-align: center;
+    }
+
+    input[type="text"] {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+        font-size: 16px;
+        margin-left: 3%;
+        text-align: center;
+    }
+
+    input{
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 220px;
+        font-size: 16px;
+        margin-left: 3%;
+        text-align: center;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        
+    }
+
+</style>
+
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+            function updateDateTimeFields(typeOfLocalOD) {
+                var date = new Date();
+                var outDateTimeField = document.querySelector("#OutDateTime");
+                var inDateTimeField = document.querySelector("#InDateTime");
+
+                if (typeOfLocalOD === "SinceMorning") 
+                {
+                    let now= new Date();
+                    inDateTimeField.value = now.toLocaleString("en-GB").slice(0, 21);
+
+                    now.setHours(9, 30, 00);
+                    outDateTimeField.value = now.toLocaleString("en-GB").slice(0, 21);
+                    
+                } 
+                else if (typeOfLocalOD === "UptoEvening") 
+                {
+
+                    outDateTimeField.value = date.toLocaleString("en-GB").slice(0, 21);
+                    
+                    date.setHours(18, 30, 00);
+                    inDateTimeField.value = date.toLocaleString("en-GB").slice(0, 21);
+                }
+
+                else 
+                {
+                    outDateTimeField.value = date.toLocaleString("en-GB").slice(0, 21);
+
+                    inDateTimeField.value = " - "
+                }
+            }
+
+    </script>
+}
+
+

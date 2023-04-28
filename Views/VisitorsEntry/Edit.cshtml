@@ -1,0 +1,124 @@
+﻿@model Gate_Pass_management.Models.VisitorsEntry
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 class="head2"><b>EDIT ENTRY</b></h2>
+<hr />
+
+<form asp-action="Edit">
+
+    <div class="form-group1" >
+        <label asp-for="EntryDateTime"> Entry Date and Time : </label>
+        <input asp-for="EntryDateTime" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="VisitorMobileNo" class="control-label"> Visitor's Mobile No. : </label>
+        <input asp-for="VisitorMobileNo" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="VisitorName" class="control-label"> Visitor's Name : </label>
+        <input asp-for="VisitorName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="CompanyName" class="control-label"> Company NAme</label>
+        <input asp-for="CompanyName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="EmployeeName" class="control-label"> Employee Name : </label>
+        <input asp-for="EmployeeName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="PurposeOfVisit" class="control-label"> Purpose of Visit : </label>
+        <input asp-for="PurposeOfVisit" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="VisitDateTime" class="control-label"> Visit Date and Time : </label>
+        <input asp-for="VisitDateTime" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="VisitEndDateTime" class="control-label"> Visit End Date and Time : </label>
+        <input asp-for="VisitEndDateTime" class="form-control" />
+        <span asp-validation-for="VisitEndDateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="VehicleType" class="control-label"> Vehicle Type : </label>
+        <input asp-for="VehicleType" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="VehicleNo" class="control-label"> Vehicle No. : </label>
+        <input asp-for="VehicleNo" class="form-control" readonly />
+    </div>
+
+    <div class="form1">
+        <input type="submit" value="Save" class="btn btn-dark" />
+        <a asp-action="Index" class="btn btn-dark">Back</a>
+    </div>
+</form>
+
+<style>
+    .var {
+        margin-left: 15%;
+        color: #f3172d;
+    }
+
+    .head2 {
+        text-align: center;
+    }
+    /* Add your custom styles here */
+    /* Example: */
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        margin-left: 29%;
+        text-align: center;
+    }
+
+    .form1 {
+        margin-top: 2%;
+        margin-left: 48%;
+    }
+
+    .form-group1 {
+        margin-bottom: 20px;
+        display: flex;
+        margin-top: 3%;
+        text-align: center;
+        margin-left: 29%;
+    }
+
+    label {
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-left: 15%;
+        text-align: center;
+    }
+
+    input[type="text"], input[type="datetime-local"] {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+        font-size: 16px;
+        margin-left: 3%;
+        text-align: center;
+    }
+
+    input[type="submit"] {
+        
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        align: center;
+    }
+</style>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
