@@ -1,0 +1,140 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+<script>
+    function updateTime() {
+        var now = new Date();
+        var timeElement = document.getElementById('currentTime');
+        var dateElement = document.getElementById('currentDate');
+        timeElement.textContent = now.toLocaleTimeString();
+        dateElement.textContent = now.toLocaleDateString();
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+</script>
+<div class="row mb-3">
+    @using (Html.BeginForm("Index", "VisitorsEntry", FormMethod.Get))
+    {
+        <p class="changes">
+
+            <div>
+                <a class="btn btn-dark"> Search By Name </a>
+                <input type="text" class="btn btn-outline-dark" name="searchString" value="@ViewBag.CurrentFilter" />
+                <button class="btn btn-dark" type="submit">Search</button>
+                <a class="btn btn-dark" asp-action="Create">New Entry</a>
+                <a class="btn btn-dark" href="@Url.Action("ExportToExcel", "VisitorsEntry")">Export Data</a>
+            </div>
+
+        </p>
+    }
+</div>
+<style>
+
+    .heading {
+        margin-top: 1%;
+    }
+
+    .btn {
+        margin-left: 1%;
+    }
+
+    .table {
+        max-width: 100%;
+    }
+
+
+    .para1 {
+        margin-left: 50%;
+        margin-top: 1%;
+    }
+
+    .para2 {
+        margin-left: 2%;
+        margin-top: 1%;
+    }
+
+
+    input[type="text"] {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+        font-size: 16px;
+    }
+</style>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Entry Date & Time
+            </th>
+            <th>
+                Visitors Name
+            </th>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Purpose Of Visit
+            </th>
+            <th>
+                Visit Date & Time
+            </th>
+            <th>
+                Visit End Date & Time
+            </th>
+            <th>
+                Vehicle Type
+            </th>
+            <th>
+                Vehicle No
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurposeOfVisit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitEndDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleNo)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+*@

@@ -1,0 +1,162 @@
+﻿@model Gate_Pass_management.Models.VisitorsEntry
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="head2"><b>DELETE ENTRY</b></h2>
+
+<div>
+    <h6 class="head2">" Visitor's Entry "</h6>
+    <hr />
+
+        <div class="form-group1">
+            <b>
+                Entry Date and Time : 
+            </b>
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.EntryDateTime)
+            </p>
+        </div>
+       
+        <div class="form-group">
+            <b>
+                Visitor's Mobile No. :
+            </b>
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.VisitorMobileNo)
+            </p>
+        </div>
+
+        <div class="form-group">
+            <b>
+                Visitor's Name : 
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.VisitorName)
+            </p>
+        </div>
+
+        <div class="form-group">
+            <b>
+                Company Name :  
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.CompanyName)
+            </p>
+        </div>
+        
+
+         <div class="form-group">
+            <b>
+                Employee Name :  
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.EmployeeName)
+            </p>
+         </div>
+        
+
+         <div class="form-group">
+            <b>
+                Purpose of Visit :  
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.PurposeOfVisit)
+            </p>
+         </div>
+        
+
+         <div class="form-group">
+            <b>
+                Visit Date and Time :  
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.VisitDateTime)
+            </p>
+         </div>
+        
+
+         <div class="form-group">
+            <b>
+                Visit End Date and Time :  
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.VisitEndDateTime)
+            </p>
+         </div>
+        
+
+         <div class="form-group">
+            <b>
+                Vehicle Type :  
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.VehicleType)
+            </p>
+         </div>
+        
+
+         <div class="form-group">
+            <b>
+                Vehicle No. :   
+            </b>
+
+            <p>
+            &nbsp;&nbsp;@Html.DisplayFor(model => model.VehicleNo)
+            </p>
+         </div>
+    
+    <style>
+        .head2 {
+            text-align: center;
+        }
+        /* Add your custom styles here */
+        /* Example: */
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            margin-left:42% ;
+            text-align: center;
+        }
+
+        .form1 {
+            margin-top: 2%;
+            margin-left: 48%;
+        }
+
+        .form-group1 {
+            margin-bottom: 20px;
+            display: flex;
+            margin-top: 3%;
+            text-align: center;
+            margin-left: 42%;
+        }
+    </style>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form1">
+            <input type="submit" value="Delete" onclick="confirmDelete()" class="btn btn-dark" />
+            <a asp-action="Index" class="btn btn-dark">Back</a>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete?")) {
+        } else {
+            // User clicked Cancel, do nothing
+        }
+    }
+
+</script>
+

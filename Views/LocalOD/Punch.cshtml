@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Gate_Pass_management.Models.LocalOD>
+
+@foreach (var localOD in Model)
+{
+    <tr>
+        <td>@localOD.EmployeeName</td>
+        <td>@localOD.VisitLocation</td>
+        <td>@localOD.PurposeOfVisit</td>
+        <td>@localOD.TypeOfVisit</td>
+        <td>@localOD.TypeOfLocalOD</td>
+        <td>@localOD.OutDateTime</td>
+        <td>
+            @localOD.InDateTime
+            {
+            <a asp-action="Punch" asp-route-id="@localOD.Id">Punch</a>
+            }
+        </td>
+    </tr>
+}
+

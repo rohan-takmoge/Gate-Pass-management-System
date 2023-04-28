@@ -1,0 +1,150 @@
+﻿@model VisitorsEntry
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="head2"><b>CREATE NEW ENTRY</b></h1>
+<hr />
+
+<form asp-action="Create">
+
+    <div class="form-group1">
+        <label asp-for="EntryDateTime">Entry Date and Time : </label>
+        <input asp-for="EntryDateTime" class="form-control" />
+        <span class =" var" asp-validation-for="EntryDateTime" class="text-danger"></span>
+        
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitorMobileNo">Visitors Mobile No. : </label>
+        <input asp-for="VisitorMobileNo" class="form-control" />
+        <span class=" var" asp-validation-for="VisitorMobileNo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitorName">Visitor Name : </label>
+        <input asp-for="VisitorName" class="form-control" />
+        <span class=" var" asp-validation-for="VisitorName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CompanyName">Company Name : </label>
+        <input asp-for="CompanyName" class="form-control" />
+        <span class=" var" asp-validation-for="CompanyName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EmployeeName">Employee Name : </label>
+        <input asp-for="EmployeeName" class="form-control" />
+        <span class =" var" asp-validation-for="EmployeeName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PurposeOfVisit">Purpose Of Visit : </label>
+        <input asp-for="PurposeOfVisit" class="form-control" />
+        <span class=" var" asp-validation-for="PurposeOfVisit" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitDateTime">Visit Date and Time : </label>
+        <input asp-for="VisitDateTime" class="form-control" />
+        <span class=" var" asp-validation-for="VisitDateTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitEndDateTime">Visit End Date and Time : </label>
+        <input asp-for="VisitEndDateTime" class="form-control" />
+        <span class=" var" asp-validation-for="VisitEndDateTime" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VehicleType">Vehicle Type : </label>
+        <input asp-for="VehicleType" class="form-control" />
+        <span class=" var" asp-validation-for="VehicleType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VehicleNo">Vehicle No. : </label>
+        <input asp-for="VehicleNo" class="form-control" />
+        <span class=" var" asp-validation-for="VehicleNo" class="text-danger"></span>
+    </div>
+
+    <div class="form1">
+        <button type="submit" class="btn btn-dark">Create</button>
+        <a asp-action="Index" class="btn btn-dark">Cancel</a>
+    </div>
+
+</form>
+<style>
+    .var{
+        margin-left: 15%;
+        color: #f3172d;
+    }
+    .head2{
+        text-align: center;
+    }
+    /* Add your custom styles here */
+    /* Example: */
+    .form-group {
+        margin-bottom: 20px;
+        display:flex;
+        text-align: center;
+        
+    }
+    .form1{
+        margin-top :2%;
+        margin-left: 48%;
+    }
+    .form-group{
+        margin-left: 29%;
+    }
+    .form-group1{
+        margin-bottom: 20px;
+        display: flex;
+        margin-top:3%;
+        text-align: center;
+        margin-left: 29%;
+    }
+    label {
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-left: 15%;
+        text-align: center;
+    }
+
+    input[type="text"], input[type="datetime-local"] {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width:200px;
+        font-size: 16px;
+        margin-left: 3%;
+        text-align: center;
+
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        align: center;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+</style>
+
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    
+}
+

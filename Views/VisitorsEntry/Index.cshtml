@@ -1,0 +1,176 @@
+﻿@model IEnumerable<Gate_Pass_management.Models.VisitorsEntry>
+@{
+    DateTime currentTime = DateTime.Now;
+}
+<div class="heading">
+    <h1  class="text-secondary" style="font-family:'Tw Cen MT'; font-size: 3.5rem; font-weight: 900; ">VISIT<img class="cropped-ofp" src="https://th.bing.com/th?id=ODLS.abe2ed37-746a-4b6b-a750-88d95b4f440d&w=32&h=32&o=6&pid=13.1" style="object-position: 62% 25%; height: 83px; object-fit: contain; background-position: bottom; width: 45.5px; margin-bottom: -3%;" />RS ENTRY</h1>
+    <div>
+    <b class="para1 "> <span id="currentTime"></span></b>
+    <b class="para2"> <span id="currentDate"></span></b>
+    </div>
+</div>
+<script>
+    function updateTime() {
+        var now = new Date();
+        var timeElement = document.getElementById('currentTime');
+        var dateElement = document.getElementById('currentDate');
+        timeElement.textContent = now.toLocaleTimeString("en-GB");
+        dateElement.textContent = now.toLocaleDateString("en-GB");
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+</script>
+
+
+<div class="row mb-3">
+    @using (Html.BeginForm("Index", "VisitorsEntry", FormMethod.Get))
+    {
+        <p class="changes" style="margin-top: 0%;">
+
+            <div>
+                @*
+                <a class="btn btn-dark"> Search By Name </a>
+                *@
+                <div class="d-inline-block">
+                <input type="text" class="btn btn-outline-light" placeholder="Search by name" name="searchString" value="@ViewBag.CurrentFilter"  />
+                <button class="btn btn-secondary" type="submit">🔍</button>
+                </div>
+                <div class="d-inline-block">
+                    <a class="btn btn-secondary" asp-action="Create">New Entry</a>
+                </div>
+                <div class="d-inline-block">
+                    <a class="btn btn-danger" href="@Url.Action("ExportToExcel", "VisitorsEntry")"> Export Data</a>
+                </div>
+            </div>
+
+        </p>
+    }
+</div>
+<style>
+    .cropped-ofp {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        object-position: 25% 25%;
+    }
+    .d-inline-block{
+        margin-left:1%;
+    }
+
+    .heading {
+        margin-left: 2%;
+        margin-top: 1%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .table {
+        max-width: 100%;
+        font-size:100%;
+        text-align:center;
+    }
+
+    .para1 {
+        margin-left: -31%;
+        margin-top: 1%;
+        font-size: xx-large;
+    }
+
+    .para2 {
+        margin-left: 1%;
+        margin-top: 1%;
+    }
+
+    .changes{
+        margin-top : 1%;
+    }
+
+    input[type="text"] {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+        font-size: 16px;
+    }
+</style>
+<table class="table">
+    <thead>
+        <tr style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+            <th >
+                Entry Date & Time
+            </th>
+            <th>
+                Visitors Name
+            </th>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Employee Name
+            </th>
+            <th >
+                Purpose Of Visit
+            </th>
+            <th>
+                Visit Date & Time
+            </th>
+            <th>
+                Visit End Date & Time
+            </th>
+            <th>
+                Vehicle Type
+            </th>
+            <th>
+                Vehicle No
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                    @Html.DisplayFor(modelItem => item.EntryDateTime)
+                </td>
+                <td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                    @Html.DisplayFor(modelItem => item.VisitorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                    @Html.DisplayFor(modelItem => item.PurposeOfVisit)
+                </td>
+                <td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                    @Html.DisplayFor(modelItem => item.VisitDateTime)
+                </td>
+                <td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                    @Html.DisplayFor(modelItem => item.VisitEndDateTime)
+                </td >
+                <td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                    @Html.DisplayFor(modelItem => item.VehicleType)
+                </td>
+                <td style="font-family: Calibri; font-size: 125%;font-weight: 400;">
+                    @Html.DisplayFor(modelItem => item.VehicleNo)
+                </td>
+                <td>
+                   <a class="btn btn-secondary btn-sm" asp-action="Punch" asp-route-id="@item.Id" >Punch</a>
+                   <a  asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*
+    <a  asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+    <a  asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+*@
