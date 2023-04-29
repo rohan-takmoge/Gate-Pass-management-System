@@ -32,9 +32,10 @@ namespace eTickets.Data
                             EmployeeName = "Rohan Takmoge",
                             VisitLocation = "State Bank Of India",
                             PurposeOfVisit = "Official",
+                            TypeOfVisit= 0,
                             TypeOfLocalOD = "SinceMorning",
-                            OutDateTime = ("2023, 4, 13, 9, 0, 0") ,
-                            InDateTime = ("2023, 4, 13, 13, 0, 0")
+                            OutDateTime = ("13/4/2023, 09:00:00") ,
+                            InDateTime = ("13/4/2023, 13:00:00")
                         },
 
                         new LocalOD()
@@ -43,11 +44,12 @@ namespace eTickets.Data
                             EmployeeName = "Rahul Takmoge",
                             VisitLocation = "ABL Main Branch",
                             PurposeOfVisit = "Official",
+                            TypeOfVisit= 0,
                             TypeOfLocalOD = "UptoEvening",
-                            OutDateTime = "2023, 4, 14, 8, 0, 0",
-                            InDateTime = "2023, 4, 14, 11, 0, 0"
+                            OutDateTime = "14/4/2023, 08:00:00",
+                            InDateTime = "14/4/2023, 11:00:00"
                         }
-                    });
+                    }); ;
                     }
                     context.SaveChanges();
 
@@ -58,14 +60,14 @@ namespace eTickets.Data
                     {
                         new VisitorsEntry()
                         {
-                            EntryDateTime= "2023, 4, 13, 14, 0, 0",
+                            EntryDateTime= "13/4/2023, 14:00:00",
                             VisitorMobileNo= " 7276713047",
                             VisitorName = "Rohan Takmoge",
                             CompanyName = "ABL Nashik",
                             EmployeeName = "Kiran Chougule",
                             PurposeOfVisit = "Meeting",
-                            VisitDateTime = "2023, 4, 13, 14, 0, 0",
-                            VisitEndDateTime = "2023, 4, 13, 16, 0, 0",
+                            VisitDateTime = "13/4/2023, 14:00:00",
+                            VisitEndDateTime = "13/4/2023, 16:00:00",
                             VehicleType = "Bike",
                             VehicleNo = "ABC-123"
                         },

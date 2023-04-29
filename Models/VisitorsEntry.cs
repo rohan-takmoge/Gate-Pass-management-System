@@ -7,10 +7,6 @@ namespace Gate_Pass_management.Models
     {
         public int Id { get; set; }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5f99c9c4061420313f9ab44b0291b50e5fd292b0
         public String EntryDateTime { get; set; }
         public string VisitorMobileNo { get; set; }
         public string VisitorName { get; set; }
