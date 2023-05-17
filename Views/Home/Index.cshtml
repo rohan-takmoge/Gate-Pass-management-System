@@ -1,14 +1,84 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center text-secondary" style="margin-top:10%;">
+@*
+<div class="text-center text-secondary" style="position: fixed; top: 50%;left: 50%;transform: translate(-50%, -50%);">
 
     <b style="font-size:600%; text-shadow: 3px 3px 3px #ababab;">GP<span style="  color:	#FF4500 ">M</span>S</b>
     <h6 class="text-xxl " style="text-shadow: 3px 3px 3px #ababab;"><b> GATE-PASS <span style="  color:	#FF4500 ">MANAGEMENT</span> SYSTEM </b></h6>
- 
+
 </div>
+*@
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <div class="home">
+        <div class="home-container">
+            <h3>GATE PASS <span style="  color:	#FF4500 "> MANAGEMENT</span> SYSTEM</h3>
+            <p>
+                The Gate Pass Management System is a web-based application that provides an
+                interface for managing the entries and exits of visitors and employees in an organization.
+            </p>
+            <div>
+                <a asp-area="" asp-controller="LocalOD" asp-action="Create">Local OD</a> 
+                <a asp-area="" asp-controller="VisitorsEntry" asp-action="Create">Visitor Entry</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 
 <style>
-    
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.home {
+  background: url('./images/home-bg.jpg');
+  min-height: 100vh;
+  background-size:auto;
+  background-position: center;
+  position: relative;
+  top:0%;
+}
+
+.home-container {
+  background: #000000ba;
+  position: absolute;
+  top: 45%;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home-container h3 {
+  color: #fdfdfd;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.home-container p {
+  color: #686868;
+  font-weight: 500;
+  width: 50%;
+  font-size: 15px;
+  text-align: center;
+}
+
+.home-container a {
+  background-color: #FF4500;
+  padding: 12px 25px;
+  text-decoration: none;
+  color: #fdfdfd;
+  border-radius: 50px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 </style>
